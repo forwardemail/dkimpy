@@ -144,7 +144,7 @@ arcSign(message, selector, domain, privateKeyFile, srvId)
 })();
 ```
 
-The value of `result` is an Array of headers to add to the message for its ARC signature.
+The value of `result` is an String with the new message and its signed ARC headers, if any.
 
 
 ## Contributors
