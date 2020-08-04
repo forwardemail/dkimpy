@@ -1,7 +1,7 @@
 const path = require('path');
 const { exec, execSync } = require('child_process');
 
-const debug = require('debug');
+const debug = require('debug')('dkimpy');
 const ms = require('ms');
 const semver = require('semver');
 
