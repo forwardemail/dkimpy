@@ -4,6 +4,7 @@ const { exec, execSync } = require('child_process');
 const debug = require('debug')('dkimpy');
 const ms = require('ms');
 const semver = require('semver');
+const splitLines = require('split-lines');
 
 const scripts = {
   dkimVerify: path.join(__dirname, 'scripts', 'dkimverify.py'),
@@ -43,15 +44,15 @@ function dkimVerify(message, index = 0) {
     });
     const stdout = [];
     const stderr = [];
-    child.stderr.on('data', data => {
+    child.stderr.on('data', (data) => {
       stderr.push(data);
     });
-    child.stdout.on('data', data => {
+    child.stdout.on('data', (data) => {
       stdout.push(data);
     });
     child.stdin.write(message);
     child.stdin.end();
-    child.on('close', code => {
+    child.on('close', (code) => {
       // exits with code 1 if failed
       if (code === 1) return resolve(false);
       if (stderr.length > 0) return reject(new Error(stderr.join('')));
@@ -74,19 +75,19 @@ async function arcSign(message, selector, domain, privateKeyFile, srvId) {
     );
     const stdout = [];
     const stderr = [];
-    child.stderr.on('data', data => {
+    child.stderr.on('data', (data) => {
       stderr.push(data);
     });
-    child.stdout.on('data', data => {
+    child.stdout.on('data', (data) => {
       stdout.push(data);
     });
     child.stdin.write(message);
     child.stdin.end();
-    child.on('close', code => {
-      // exits with code 1 if failed
-      if (code === 1) return resolve(false);
+    child.on('close', () => {
       if (stderr.length > 0) return reject(new Error(stderr.join('')));
-      resolve(stdout.join(''));
+      const lines = stdout.join('').trim();
+      if (lines.length === 0) return resolve([]);
+      resolve(splitLines(lines));
     });
   });
 }
@@ -99,17 +100,15 @@ async function arcVerify(message) {
     });
     const stdout = [];
     const stderr = [];
-    child.stderr.on('data', data => {
+    child.stderr.on('data', (data) => {
       stderr.push(data);
     });
-    child.stdout.on('data', data => {
+    child.stdout.on('data', (data) => {
       stdout.push(data);
     });
     child.stdin.write(message);
     child.stdin.end();
-    child.on('close', code => {
-      // exits with code 1 if failed
-      if (code === 1) return resolve(false);
+    child.on('close', () => {
       if (stderr.length > 0) return reject(new Error(stderr.join('')));
       resolve(stdout.join(''));
     });

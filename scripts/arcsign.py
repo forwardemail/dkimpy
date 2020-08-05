@@ -70,7 +70,6 @@ def main():
                        srv_id, cv, linesep=dkim.util.get_linesep(message))
         for line in sig:
             sys.stdout.write(line)
-        sys.stdout.write(message)
     except Exception as e:
         print(e, file=sys.stderr, end = '')
         sys.stdout.write(message)
