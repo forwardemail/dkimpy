@@ -13,8 +13,7 @@
   "dependencies": {
     "debug": "^4.1.1",
     "ms": "^2.1.2",
-    "semver": "^7.3.2",
-    "split-lines": "^2.0.0"
+    "semver": "^7.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -30,6 +29,7 @@
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
+    "split-lines": "^2.0.0",
     "xo": "latest"
   },
   "engines": {

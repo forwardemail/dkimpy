@@ -4,7 +4,6 @@ const { exec, execSync } = require('child_process');
 const debug = require('debug')('dkimpy');
 const ms = require('ms');
 const semver = require('semver');
-const splitLines = require('split-lines');
 
 const scripts = {
   dkimVerify: path.join(__dirname, 'scripts', 'dkimverify.py'),
@@ -85,9 +84,7 @@ async function arcSign(message, selector, domain, privateKeyFile, srvId) {
     child.stdin.end();
     child.on('close', () => {
       if (stderr.length > 0) return reject(new Error(stderr.join('')));
-      const lines = stdout.join('').trim();
-      if (lines.length === 0) return resolve([]);
-      resolve(splitLines(lines));
+      resolve(stdout.join(''));
     });
   });
 }
