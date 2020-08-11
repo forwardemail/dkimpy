@@ -39,7 +39,6 @@ test('arc sign returns none', async (t) => {
   t.true(lines[0].startsWith('ARC-Seal'));
   t.true(lines[1].startsWith('ARC-Message-Signature'));
   t.true(lines[2].startsWith('ARC-Authentication-Results'));
-  t.is(none, lines.slice(3).join('\n'));
 });
 
 test('arc sign returns pass', async (t) => {
@@ -50,7 +49,7 @@ test('arc sign returns pass', async (t) => {
     key,
     'mx.google.com'
   );
-  t.is(result, pass);
+  t.is(result, '');
 });
 
 test('arc sign throws error with missing From header', async (t) => {
