@@ -65,14 +65,14 @@ def main():
     if re.search(b'arc-seal', message, re.IGNORECASE):
         cv = dkim.CV_Pass
 
-    try:
-        sig = dkim.arc_sign(message, selector, domain, open(privatekeyfile, "rb").read(),
-                       srv_id, cv, linesep=dkim.util.get_linesep(message))
-        for line in sig:
-            sys.stdout.write(line)
-    except Exception as e:
-        print(e, file=sys.stderr, end = '')
-        sys.stdout.write(message)
+    #try:
+    sig = dkim.arc_sign(message, selector, domain, open(privatekeyfile, "rb").read(),
+                   srv_id, cv, linesep=dkim.util.get_linesep(message))
+    for line in sig:
+        sys.stdout.write(line)
+    #except Exception as e:
+    #    print(e, file=sys.stderr, end = '')
+    #    sys.stdout.write(message)
 
 
 if __name__ == "__main__":

@@ -55,7 +55,7 @@ test('arc sign returns pass', async (t) => {
 test('arc sign throws error with missing From header', async (t) => {
   await t.throwsAsync(
     arcSign(missingFrom, 'default', 'example.com', key, 'mx.google.com'),
-    { message: 'The From header field MUST be signed' }
+    { message: /The From header field MUST be signed/g }
   );
   t.pass();
 });
