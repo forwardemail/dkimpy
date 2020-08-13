@@ -14,6 +14,10 @@ const pass = fs.readFileSync(
   path.join(__dirname, 'fixtures', 'arc-pass.txt'),
   'utf8'
 );
+const syntax = fs.readFileSync(
+  path.join(__dirname, 'fixtures', 'arc-syntax.txt'),
+  'utf8'
+);
 const missingFrom = pass
   .split('\n')
   .filter((line) => !line.startsWith('From:'))
@@ -44,6 +48,17 @@ test('arc sign returns none', async (t) => {
 test('arc sign returns pass', async (t) => {
   const result = await arcSign(
     pass,
+    'default',
+    'example.com',
+    key,
+    'mx.google.com'
+  );
+  t.is(result, '');
+});
+
+test('arc sign does not throw error on bounce', async (t) => {
+  const result = await arcSign(
+    syntax,
     'default',
     'example.com',
     key,

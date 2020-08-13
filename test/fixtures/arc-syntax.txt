@@ -1,0 +1,451 @@
+Authentication-Results: mx1.forwardemail.net; spf=pass reason="sender SPF
+ authorized" smtp.helo=sonic307-10.consmr.mail.ne1.yahoo.com
+ smtp.mailfrom=yahoo.com; dkim=pass header.d=yahoo.com; arc=none;
+ dmarc=fail (Used From Domain Record) header.from=amazon.com
+ policy.dmarc=quarantine
+X-ForwardEmail-Sender: rfc822; hidden@yahoo.com
+X-ForwardEmail-Session-ID: s5fq6fzjg6xzvxxq
+X-ForwardEmail-Version: 7.0.9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1597293265; bh=x7mnfoWJMCyCo+4iqzUe1+6l7xJXQ6wbsTYNKnacrCY=; h=From:To:Subject:Date:From:Subject; b=gWhYBGxH614CgiUgw+NEYWwKCNDmYWnaps4fVelZ1fxN4OOJfiHSNs6YMbpCXGmj/cwYILkLYZft18bgXJbC22zwSMXheryPHXTAEjosZDogBUiT/8Pv0peF4mb+AwHATVoHypfn+3vBSJegV8ClogHvHkxbvvR9DLsGZhBX9RFXl4GAC8pfA1p9vYXghK0pBdtoU6brdmn7CB8XM/39e7PG/YskrvPCkYcVPa9lIcjZDa4K9ZfinqG+QO39x+MIEOKDM/gJVgbJs9K3V+jVdxMvBB/stHckKdob8dHXFFr90p2zOQAxIgZQK8hlBKMTSO6xkxLTUhYInGJBXys5LA==
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic307.consmr.mail.ne1.yahoo.com with HTTP; Thu, 13 Aug 2020 04:34:25 +0000
+Received: from 10.253.231.22
+ by atlas209.free.mail.gq1.yahoo.com with HTTP; Thu, 13 Aug 2020 04:34:23 +0000
+Return-Path: <202008130434229ec3b72f4ccc4774bf05c7300c70p0na@bounces.amazon.com>
+Received: from 54.240.13.19 (EHLO a13-19.smtp-out.amazonses.com)
+ by 10.253.231.22 with SMTPs; Thu, 13 Aug 2020 04:34:23 +0000
+X-Originating-Ip: [54.240.13.19]
+Received-SPF: pass (domain of bounces.amazon.com designates 54.240.13.19 as permitted sender)
+Authentication-Results: atlas209.free.mail.gq1.yahoo.com;
+ dkim=pass header.i=@amazon.com header.s=jvxsykglqiaiibkijmhy37vqxh4mzqr6;
+ dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono;
+ spf=pass smtp.mailfrom=bounces.amazon.com;
+ dmarc=success(p=QUARANTINE) header.from=amazon.com;
+X-Apparently-To: hidden@yahoo.com; Thu, 13 Aug 2020 04:34:23 +0000
+X-YMailISG: GsuO_dAWLDtUI7nFeF_IncB9rsaTITjCekYXptQFL4BY_i4y
+ iy3t0ORQ4XOsKaiCKa1OXDUEAD5BLy_3nT9hd.ojYEkrfkKHLe0JDvWgpWHy
+ 89owTE0WTzGgbuRA1QZjTQzBHJGvixIU5kN2kfDHsr0jt3.kWQtN5_x37u8c
+ YM4jd2Gmwghu0KSyu7lv1OKFg9HNJc0uxqrg6_aupA2v6aUhxIh8HdpjSFwR
+ 2_LG2rhQtjSNSnCAaxAlX3LASMN7pkSVd9zoDTj_ghlUC5dAuW5ipFV7PDvR
+ atgSWkD8qsDfiq6LGoMzW8_vnQPJP.8Vj4ze1zNfVDLy7w2pUOla_agPVXPP
+ IlvBKIkvr31IvfOrXvz1s8EAXhJTZeywbQTgDIC33f3MUCRjotGktj6UiVGf
+ oMh8u.LINaZhLuw95zUcsZxr_Mgl.8HXrlivr.ieBTAUdS9BZeU4rgEY8KTb
+ 5qH7wv_vDr569WSQMGDvbzTc8NBVHxf.NPabLe1x8_iqn6HoOPJS2dVTsX_Y
+ WuLQ.Um.PJlE9X87Ytd8z7RkmZBo13kQmUG7a.GMCnqCW77gv1lTq7gmsk3j
+ 4p18vS.mO4n8uOjXoHbUt1I2gO9mjd7vUxWnggoH2MKUioh05epB6vnZhbWb
+ msIYNVElwT7FaKGu0AHXDn.wm2yU8mvTg2wDrWKQ_Glifc.aHjzYnn8.kPq7
+ 1KV6grnBdVQNYu4y5z_YmMbbc.f3FY5UAK6njK0gwnYP06lpwa6n.fzljMUq
+ 7XNTm5osTl8GPZAiUQfm8kDEMFPKgOsWoOPENKSq93xOE72YCp_7xdrc1ICV
+ GEbbsk0y31XYVIPZ0KSSYJyaanBdUSsU.vwsjfaucy.h3WY9gWhFlZJtp_PN
+ sjdiIOt_xkA8Uyk5pzuIDjL14rMvZocMUEUzBO03jlnhRvxa.gGwHYhW7Dj9
+ xbejWZuQ5teEP0i2HlraSPZXVNq7zz2Q_fBXQzM6ql8ZFoRYfhQ1eWD3uQ.X
+ 7oEVm7K6dKtkSsCzze72hY5h3q5I1NgtmIWUs9pmxz2xDEemJS0X674_pJsI
+ ZQT7Q.AdJ1HHCqHoBCP3ZBf60MmmFuV9BSuue4acVShRqCZghtJSyxSpGacW
+ 5IhZbsUoOZ1W_VG3KamJ.zo1jKin5vUoAs5wpHTjGJU7oIPkA6ntuot4eOCb
+ Q258F_8ZUpDhdBfm9C7whGwvc1dloidlNKsYWsgEDL4lvjFLfjFG_Uj2CBmC
+ rA5Rrk96113dUagynQkjHj3jehfZxus.OA--
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=jvxsykglqiaiibkijmhy37vqxh4mzqr6; d=amazon.com; t=1597293262;
+	h=From:To:Message-ID:Subject:MIME-Version:Content-Type:Date;
+	bh=QDTO8YToaEXJY4WCOA83N3sxlwFztuz0pWI/N085ooc=;
+	b=W8zYOvOW9sPITbV8UyIbRyyNxu2FSPBrmzNmHmBmIwJz3/JiAWQ8sBPGOrfE1/0d
+	E38wuRZMZRyTU2ykjiIoyotBitjEUabIe8Z3nvxT4rSju3qveaN9zXOkS2QgEuTt2mn
+	0ETGcV2hey1hw4YurfMPYNhbn8GFvdpgxOD5TJaU=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1597293262;
+	h=From:To:Message-ID:Subject:MIME-Version:Content-Type:Date:Feedback-ID;
+	bh=QDTO8YToaEXJY4WCOA83N3sxlwFztuz0pWI/N085ooc=;
+	b=YOlYQGCNTmT621E6/vCsJMMSL4vG33VB2gHRCalxB6k911sHgQmTSvtzi5GeFQq8
+	9HSu/Dw7dH6/gRhMy+Ev9IzxMEhoPLCb7CNZprnI16OUXySwkcB99vwqGEmxV+BQijk
+	NiLXTdOZu2iWQk3pZdBUq6TAOR2TRGhsUWoqYtkU=
+From: "Amazon.com" <account-update@amazon.com>
+To: hidden@yahoo.com
+Message-ID: <01000173e618f53c-d7eab9af-0d29-4aa6-870d-2b6cb1ac1a13-000000@email.amazonses.com>
+Subject: Verify your new Amazon account
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_83827289_2024310264.1597293262135"
+X-AMAZON-MAIL-RELAY-TYPE: notification
+Bounces-to: 202008130434229ec3b72f4ccc4774bf05c7300c70p0na@bounces.amazon.com
+X-AMAZON-METADATA: CA=C39VIEGRHNUE4S
+X-Original-MessageID: <urn.rtn.msg.202008130434229ec3b72f4ccc4774bf05c7300c70p0na@1597293262135.rtn-svc-na-back-c42xl1a-3c0f5c04.us-east-1.amazon.com>
+Date: Thu, 13 Aug 2020 04:34:22 +0000
+X-SES-Outgoing: 2020.08.13-54.240.13.19
+Feedback-ID: 1.us-east-1.ZHcGJK6s+x+i9lRHKog4RW3tECwWIf1xzTYCZyUaiec=:AmazonSES
+X-Yahoo-Forwarded: From hidden@yahoo.com To hidden@hidden.life
+Content-Length: 4098
+
+------=_Part_83827289_2024310264.1597293262135
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+  <html xmlns=3D"http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+"/>
+    <style type=3D"text/css">
+body {
+    margin:0;
+    color:#333;
+}
+
+a {
+    text-decoration:none;
+    color:#006699;
+}
+
+p {
+    margin:0px;
+}
+
+img {
+    border:0;
+    margin:0;
+}
+
+/* container */
+#container {
+    width:540px;
+    margin:0 auto;
+}
+
+#content {
+    width:500px;
+    margin:0 20px;
+}
+
+/* header */
+#header {
+    border-bottom:1px solid #eaeaea;
+    padding-top:10px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom:10px;
+}
+
+#title p{
+    font-size:20px;
+    font-family: "arial", "sans-serif";
+}
+
+#amazonLogo{
+    width:107px;
+    height:31px;
+}
+
+/* verification msg */
+#verificationMsg {
+    padding-left:0;
+    padding-top:9px;
+    padding-bottom:9px;
+}
+
+#verificationMsg p {
+    font-size:14px;
+    font-family: "arial", "sans-serif";
+}
+
+#verificationMsg .otp {
+    font-size:18px;
+    font-weight:bold;
+    padding-top:18px;
+}
+
+/* account security */
+#accountSecurity {
+    padding-left:0;
+    padding-top:9px;
+    padding-bottom:9px;
+}
+
+#accountSecurity p {
+    font-size:14px;
+    font-family: "arial", "sans-serif";
+}
+
+/* closing */
+#closing {
+    padding-left:0;
+    padding-top:9px;
+    padding-bottom:9px;
+}
+
+#closing p {
+    font-size:14px;
+    font-family: "arial", "sans-serif";
+}
+
+    </style>
+    <title></title>
+  </head>
+  <body>
+  <table align=3D"center" cellspacing=3D"0" id=3D"container" cellpadding=3D=
+"0">
+    <tbody>
+    <tr>
+      <td>
+        <table cellspacing=3D"0" id=3D"content" cellpadding=3D"0">
+          <tbody>
+          <tr>
+            <td id=3D"header">
+              <table cellspacing=3D"0" cellpadding=3D"0">
+                <tbody>
+                <tr>
+                  <td width=3D"250" id=3D"logo">
+<img src=3D"https://images-na.ssl-images-amazon.com/images/G/01/x-locale/cs=
+/te/logo._CB485949097_.png" id=3D"amazonLogo"/>                  </td>
+                  <td width=3D"250" id=3D"title" valign=3D"top" align=3D"ri=
+ght"><p>Verify your new Amazon account</p></td>
+                </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td id=3D"verificationMsg">
+              <p>To verify your email address, please use the following One=
+ Time Password (OTP):</p>
+              <p class=3D"otp">361698</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td id=3D"accountSecurity">
+              <p>Do not share this OTP with anyone. Amazon takes your accou=
+nt security very seriously. Amazon Customer Service will never ask you to d=
+isclose or verify your Amazon password, OTP, credit card, or banking accoun=
+t number. If you receive a suspicious email with a link to update your acco=
+unt information, do not click on the link=E2=80=94instead, report the email=
+ to Amazon for investigation.=20
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td id=3D"closing">
+              <p>Thank you for shopping with us! We hope to see you again s=
+oon.
+              </p>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </body>
+  </html>
+
+------=_Part_83827289_2024310264.1597293262135--
+
+Authentication-Results: mx1.forwardemail.net; spf=pass reason="sender SPF
+ authorized" smtp.helo=sonic315-22.consmr.mail.ne1.yahoo.com
+ smtp.mailfrom=yahoo.com; dkim=pass header.d=yahoo.com; arc=none;
+ dmarc=fail (Used From Domain Record) header.from=amazon.com
+ policy.dmarc=quarantine
+X-ForwardEmail-Sender: rfc822; hidden@yahoo.com
+X-ForwardEmail-Session-ID: q7zq4bieaavhyo3n
+X-ForwardEmail-Version: 7.0.9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1597293295; bh=PoUGdNPPsBNtc+3b+BQSRvRwPx4bF1jZA8Ur+2BFfOo=; h=From:To:Subject:Date:From:Subject; b=FnfG14+kdr//YcKIVPgYoyvizeXHv/+ZcQ9dTRYZtMlaZMzGHQOMBSUXHM5xWWdM5GVEWn6XSALZO/0MBvskicWknfloNUwr/eU35U4OcZ5mcXpRwnsU/GPWAxW4yMUJQ9J/WZWu15iTQ/JT5rImh7kygQeq79dtuN/ep2uf0g9mWIX2Xf3xeuGA89eqtxhgzE+Qb/avi/mmOlRlb8HhQhWrxXftZjannDOagmphHs9yXeVUdylW4lS1QYy6LDQu5kvS3ufwGFmCAPmPjEDAnfY7D9DFw4jf1ksFhN57QyXhI/v8KzGoE+9j8bFkpmbjD0GHpPixzalJiIR7O4A1oA==
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic315.consmr.mail.ne1.yahoo.com with HTTP; Thu, 13 Aug 2020 04:34:55 +0000
+Received: from 10.217.150.13
+ by atlas101.free.mail.ne1.yahoo.com with HTTP; Thu, 13 Aug 2020 04:34:54 +0000
+Return-Path: <202008130434532ac1cf9d8454448880caebf21080p0na@bounces.amazon.com>
+Received: from 54.240.13.59 (EHLO a13-59.smtp-out.amazonses.com)
+ by 10.217.150.13 with SMTPs; Thu, 13 Aug 2020 04:34:54 +0000
+X-Originating-Ip: [54.240.13.59]
+Received-SPF: pass (domain of bounces.amazon.com designates 54.240.13.59 as permitted sender)
+Authentication-Results: atlas101.free.mail.ne1.yahoo.com;
+ dkim=pass header.i=@amazon.com header.s=jvxsykglqiaiibkijmhy37vqxh4mzqr6;
+ dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono;
+ spf=pass smtp.mailfrom=bounces.amazon.com;
+ dmarc=success(p=QUARANTINE) header.from=amazon.com;
+X-Apparently-To: hidden@yahoo.com; Thu, 13 Aug 2020 04:34:54 +0000
+X-YMailISG: lwhHu9EWLDswSo7r5OgUAnpym4lH4JO.SMiftB0TN8JMtYZT
+ UsTQwfPVp24qt2v6VQAI.VxydlX08sVhEm6wurJaKK0q29nT7apHh.SsgmDs
+ XfKzQ92FVR0a7INr5Av1qysvrIy2wQmcc4MLmgcjaHRCFsYWBShSkhGRNIr3
+ 9hXEQ6JLtR5ZPi_CsC2rX1FK4qExYftbdd6WxtBh3rOzvJo.rniiGWHIV.Ov
+ dReXPQV4mmDRRsg9j7nP9m4JYAsxFEJpd16AAMLokXF9umOurBm2.6GPMsDq
+ PoPt7pFeEqRadmP4Tt1pTOVPPiCa2TF60ZQ4ID.o_Bk3x6ueuVvnV2IGYrU9
+ YquZUDKN6iF8V_mKCOYl2ulsDmlysnsbbgkQCK7qUBuY4smASgT4TdzQy4Nj
+ u7WhaEqRpl8DhraWsCLWVYApMUGBwpdlgQxnWlJqbzj9tjslySsn4VoEkzb9
+ sLRcXcDeOhY03V9_XuL1wPa_aJc6GVK5jBb2HBCS6TN3IuaaqwJP3yxdyURm
+ JTObOCJe6IsS4ZUjNh2gMlt.X9msNMeCDc6pKVRH3beeUnHh98Xfbem3Srdf
+ SPgld.NbaviJEKQEANt54guHRbRztyRV4KmFBV0uQ1Z4UoDIdP0zEGJwwTTi
+ 8qXORG4MXiFPHindbWQ8CvlnH8ydArhyKsYkk9L9laajljf9t0ofno36tduE
+ .Op39JuxX6cgA9mdZtr1aRff5M15i3f_FW44yYKqXSiN1FjvFI_d93T_wHHU
+ 7jaCmdJ9S2TOE_AhRaipFrJfXbMv0e3Y1Mf16toxdagXeDn2M9x8G331cujZ
+ j2U0fQgRbXz4fbQsyQEViXbAvXp.lG78_Tdd726VnsrFK4JoUyAV.1ptknuf
+ Gmv8SmKF0OSe0d7ImgDajplymgMCVSJ8iy7hlAJXusf5rj7IE4qOvVCc3Y_P
+ 2as0g7OMkXSYAn9DuShP.2km9Ui6Xr0uLko_jZVGTrWVJK_gHU5Iywnf7U5m
+ HJN6c4KlUqrOvchNHSDK_Y_YWtDYfz83cGMmsYhuAIaWv3Ml5BSUTLkdYq1S
+ CLNjkNOLZr9Pi8EY6xG19RhOWUrOmRMRlGV.AmvhrJc_C5CZD78deAQvR.jv
+ e42IAT7nPc9sROoO9I9hol4jvfUbcCopSe9zOSM.zIJKXapordp5LrKLAiAD
+ UuGUZ7l2oL9nYTqIzfA9w63NAyo6bBEF4AiuikEg0K.kjLe4em5t6q8OsKmO
+ gLvMdkGfHA--
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=jvxsykglqiaiibkijmhy37vqxh4mzqr6; d=amazon.com; t=1597293293;
+	h=From:To:Message-ID:Subject:MIME-Version:Content-Type:Date;
+	bh=5+8uy6KjMFUN4jUCqs7Q56YQunUO1ICFH3YDj5bOJ8M=;
+	b=lpyrZ9/7xcblrSuPCs6r3kCD+f8sOp6xOvWxvOoQM4LoB+QgVpHdC4GNoARaUTIZ
+	S1Qv1Tr3hoGVjRCkBRD4lDigbQTujZnfqGALgciB8OPKjDvmWUZQIZ/VBAAfFo3aTtF
+	H0kFLMsBJUu1jC4v9R3RIKh2pyj9SSPnbJYKN8fI=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1597293293;
+	h=From:To:Message-ID:Subject:MIME-Version:Content-Type:Date:Feedback-ID;
+	bh=5+8uy6KjMFUN4jUCqs7Q56YQunUO1ICFH3YDj5bOJ8M=;
+	b=B5mpye37y5SGO0S/EIWTiZ3Pe9zYaEfhzbZgV/MyyDJ1NPx3QRwRbeQtL3jcmCb4
+	jH+eyzDYsA4e7vBoQFI8+HLraf0Q7Qft8r/Zc2emtObGYvO85lcbnfezxpYnet3flmU
+	6Z+GADfmVUBhVttmlUAw9G5SWNX9+G8ZMFrz28rE=
+From: account-update@amazon.com
+To: hidden@yahoo.com
+Message-ID: <01000173e6197121-30ffcdd5-94d3-4a3b-b47a-0252d7143521-000000@email.amazonses.com>
+Subject: Revision to Your Amazon.com Account
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_84427807_603773363.1597293293854"
+X-AMAZON-MAIL-RELAY-TYPE: notification
+Bounces-to: 202008130434532ac1cf9d8454448880caebf21080p0na@bounces.amazon.com
+X-AMAZON-METADATA: CA=C1TEA7VXGMXBPR-CU=A18MH5IS4J9H6C
+X-Original-MessageID: <urn.rtn.msg.202008130434532ac1cf9d8454448880caebf21080p0na@1597293293854.rtn-svc-na-back-c42xl1f-afb289c1.us-east-1.amazon.com>
+Date: Thu, 13 Aug 2020 04:34:53 +0000
+X-SES-Outgoing: 2020.08.13-54.240.13.59
+Feedback-ID: 1.us-east-1.ZHcGJK6s+x+i9lRHKog4RW3tECwWIf1xzTYCZyUaiec=:AmazonSES
+X-Yahoo-Forwarded: From hidden@yahoo.com To hidden@hidden.life
+Content-Length: 2212
+
+------=_Part_84427807_603773363.1597293293854
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Thanks for visiting Amazon.com!
+Per your request, we have successfully enabled Two-Step Verification on your account. You can always go to Your Account > Change Account Settings to manage your security settings. If you have not made any changes to your security settings recently, please <a id="notification-contact-us-link" href=https://www.amazon.com/gp/help/customer/contact-us>Contact Us</a>.
+Thanks again for shopping with us.
+------=_Part_84427807_603773363.1597293293854
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+  </head>
+  <body>
+
+<p id="htmlNotificationHead">
+Thanks for visiting Amazon.com! </p>
+
+<p id="htmlNotificationBody">
+Per your request, we have successfully enabled Two-Step Verification on your account. You can always go to Your Account > Change Account Settings to manage your security settings. If you have not made any changes to your security settings recently, please <a id="notification-contact-us-link" href=https://www.amazon.com>Contact Us</a>.</p>
+
+<p id="htmlNotificationFooter">
+Thanks again for shopping with us.</p>
+  <img width="1" height="1" src="https://www.amazon.com" /></body>
+</html>
+------=_Part_84427807_603773363.1597293293854--
+
+Authentication-Results: mx1.forwardemail.net; spf=pass reason="sender SPF
+ authorized" smtp.helo=sonic301-30.consmr.mail.ne1.yahoo.com
+ smtp.mailfrom=yahoo.com; dkim=pass header.d=yahoo.com; arc=none;
+ dmarc=fail (Used From Domain Record) header.from=amazon.com
+ policy.dmarc=quarantine
+X-ForwardEmail-Sender: rfc822; hidden@yahoo.com
+X-ForwardEmail-Session-ID: 7tgicmrkovujnewf
+X-ForwardEmail-Version: 7.0.9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1597293360; bh=Mn7f5VTYabQo6r+880QXXd24phqfFVR8mW5a4K5RtEg=; h=From:To:Subject:Date:From:Subject; b=RPAK8FejmLNSjbx/jH33echSPrZGQ7JeS4Oxg5ATlGVHNho6XGW7eeNKBqmy3EVhaYfDU2tyjn0QG689wnOYOUMgKTKIXuxBidxSxvxcY3YsCnDOtsNS1/PE4YwoIcXtqE+jlC/jELq8frrfkf2jeKqRYnpfPag+5E0Tvk1uStFUszLeb0u4uphxjBr+NHkfLeEsgpSBf32k8SuVZCKAqh4kS9dVyaz2uYF8tmSrpK+E8sZpfokAa9vsPSQYoxWNZZ8ScedE11bw50Vu7UcsMLevVHJRnPeXi+umJUevpogCtMDkh+XeM1DL6P/+19vIg9LSf4u6oMe0tQ1B2FyAIA==
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic301.consmr.mail.ne1.yahoo.com with HTTP; Thu, 13 Aug 2020 04:36:00 +0000
+Received: from 10.215.171.92
+ by atlas201.free.mail.gq1.yahoo.com with HTTP; Thu, 13 Aug 2020 04:35:57 +0000
+Return-Path: <20200813043556a9bbde6198074bc18363da024410p0na@bounces.amazon.com>
+Received: from 54.240.13.7 (EHLO a13-7.smtp-out.amazonses.com)
+ by 10.215.171.92 with SMTPs; Thu, 13 Aug 2020 04:35:57 +0000
+X-Originating-Ip: [54.240.13.7]
+Received-SPF: pass (domain of bounces.amazon.com designates 54.240.13.7 as permitted sender)
+Authentication-Results: atlas201.free.mail.gq1.yahoo.com;
+ dkim=pass header.i=@amazon.com header.s=jvxsykglqiaiibkijmhy37vqxh4mzqr6;
+ dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono;
+ spf=pass smtp.mailfrom=bounces.amazon.com;
+ dmarc=success(p=QUARANTINE) header.from=amazon.com;
+X-Apparently-To: hidden@yahoo.com; Thu, 13 Aug 2020 04:35:58 +0000
+X-YMailISG: TTtnP58WLDuo57mWrqeM0ZQ9y8Gilpl7N5pbZeY0QmZlIcZJ
+ U5CW2UszX9J9GTSj4EKE1FZ.2tzf.wY1gn_IouI0iU.Y3EtB.aW0Yk1J1sTz
+ ZrHL.ikNxbhYN84YkbJpGly.FhvN0NcedcUXuOqzyRUB1YNvX3Pi0B8nWk5x
+ iYLqGTkf880f_bsvFiHJSIh6BHnhX3EVYVvSFVC7Gv5GvxOnyu8DxNLTHzab
+ rJCtq7tFCfpvliQp3vx1xDeidNPvxC48sIJK7G2r8X8S.zdDt2XpZTCHVH1E
+ vExpS1Zc5JocG7Uh_sdjCWlPFGyTrxVlge71fh8MmLLbb91c9gGl1xA.EGtn
+ VeBptfLiiVxldEQ_BBGEimPfUPnx.7bAPFv66BtP_4UlWyZslWASHqV4zLx6
+ d78Os.hm7wk1g0qIQMxyPFhwRyc5_1wC4VrQQt1_ZF2xwINwP5LtTvHvbS2y
+ NYkDrq4xkx2eFuoAbQhDzCdDN96iRCPMBf2fF7bwEJxXeQUCAMG9MW960tnQ
+ oFk4iBowoBeGN7FBnlJSdQ6pRSRVsA19z5pqGwl75mvBdYkI9Jiia.Du4Js9
+ iU2MtWkXaoSx6qoHUPgJetM1QTEqHEfwTJLtmFplkmduhDfjpWgtADULZaAF
+ 4SFuFHlyiOv74ZaoauHxTv3M2YIVjRDvbgZgXA8.ysBnvqELrfOb0ZKk69pW
+ XjOIzRbb5HqALm6tb_BUNe27vHwGMhymK5yaWAMrSq7Sj0.PxUqj6XWizeoC
+ tT35Ob53lOIlLCY5IgPJN6mF.Zjkv6iVbn0aJVuPX85GkkzqhGP.6Chr3A7h
+ Q_92wf4rRYDAg81HUISqoHB2IFcr3of0QODrIixAtx_GtvssxD6Ml6ZHDKFR
+ QonkYJjFNw0r05oP2Teh6GdlW3xOStj4iqxbSeAh6y37CfRVH_.MxvK6Q4gt
+ aXNr4xWYbkRaKzef05HUUv7WT07RFR4OrmWDSpZ5fYC1HbUKGX6olrFwiOcT
+ fCmUav7WwPAWYj0ImIZjHNs8ONMpTyHUARXOK6UfPoLCiiC0yo5f9MO5qTgr
+ i4gMJbGu0ij5O.TzKNUVXW4z3A.HBKlk2zcclPf6aps1Cdh.ziy63ZjJ1KrM
+ HGF2_XvWUm40IiD8l1.JY7SNo0FhjdIW2qf1L8aLp6UFRqJZJMCz1qAo2Gsy
+ QXcZ8QRhjAfXbLBTt3R51i_k9bnIwbMwr1jWHjNkxmwRmiZCdxc2rpNwdCUC
+ JqcREldS2wQmRl9baD75BtMs
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=jvxsykglqiaiibkijmhy37vqxh4mzqr6; d=amazon.com; t=1597293357;
+	h=From:To:Message-ID:Subject:MIME-Version:Content-Type:Date;
+	bh=aCoGCZrVa2S6vyosj9Wcj6XxBvJb22G+l4aatWs3CAc=;
+	b=clu9hQaaEUBm+5WfSbmeK26XbKFzcaPVswYfZJffl7eHSgFn/wXKffz4eHTeHooC
+	qHF23RrUCfiW2eXSE3+PZoPYL/TijmZ6cVVByWTkA0bJlgDTTkaTudRIjEih0Tfn4GG
+	mCXeMEiskRY06smZ52Hqlx+2D2xyMEc78+/ah4xE=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1597293357;
+	h=From:To:Message-ID:Subject:MIME-Version:Content-Type:Date:Feedback-ID;
+	bh=aCoGCZrVa2S6vyosj9Wcj6XxBvJb22G+l4aatWs3CAc=;
+	b=C/RfMGCRUZcfqenjWAxCLbF8WlW2Sc+z83Yv8sDfzS/Y/gLF3aeYxIsIjyUnuzNJ
+	eUhu3X5bkm/VjwNFFFhC93kwXSN9t34uDCb9Et15Af1Vu9NAIFzfOWLYM62qn6ZYOIQ
+	ldYg+pQGFZEDcphXlJ/lHGC3x6UZtA/JIov5Ff88=
+From: Merch By Amazon <no-reply@amazon.com>
+To: hidden@yahoo.com
+Message-ID: <01000173e61a677f-c40a14d1-4c07-481f-aa5a-a14cd5552ee2-000000@email.amazonses.com>
+Subject: Recent update to your Merch By Amazon account
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_84268396_82412100.1597293356925"
+X-AMAZON-MAIL-RELAY-TYPE: notification
+Bounces-to: 20200813043556a9bbde6198074bc18363da024410p0na@bounces.amazon.com
+X-AMAZON-METADATA: CA=C3NL3XQ8940AJ7-CU=A18MH5IS4J9H6C
+X-Original-MessageID: <urn.rtn.msg.20200813043556a9bbde6198074bc18363da024410p0na@1597293356925.rtn-svc-na-back-c42xlb-949565a6.us-east-1.amazon.com>
+Date: Thu, 13 Aug 2020 04:35:56 +0000
+X-SES-Outgoing: 2020.08.13-54.240.13.7
+Feedback-ID: 1.us-east-1.ZHcGJK6s+x+i9lRHKog4RW3tECwWIf1xzTYCZyUaiec=:AmazonSES
+X-Yahoo-Forwarded: From hidden@yahoo.com To hidden@hidden.life
+Content-Length: 1574
+
+------=_Part_84268396_82412100.1597293356925
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+
+------=_Part_84268396_82412100.1597293356925
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+<style type="text/css">
+p {
+font-family: "Calibri","sans-serif";
+font-size: 11pt;
+}
+</style>
+</head>
+
+<body><img width="1" height="1" src="HIDDEN" />
+<p>Hello Hidden,</p>
+<p>We're sending this email to confirm that changes to your address or bank information were made to your Merch By Amazon account on 2020-08-13 (UTC).</p>
+<p>Did you make these changes? If so, you don't need to do anything.</p>
+<p>If you did not make these changes, or you believe that someone changed your account without your consent, please contact our Customer Support team at merch-sellers-contactus@amazon.com.</p>
+<p>Best regards,
+<br>The Merch By Amazon Team.</p>
+<img width="1" height="1" src="HIDDEN" /></body>
+</html>
+------=_Part_84268396_82412100.1597293356925--
